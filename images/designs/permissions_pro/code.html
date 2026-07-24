@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Calling Bell - Permissions &amp; PRO</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&amp;family=JetBrains+Mono:wght@500&amp;family=Geist:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary-fixed": "#ffd9e1",
+                        "on-secondary-container": "#590028",
+                        "on-tertiary-container": "#7d00fb",
+                        "tertiary-container": "#e4d1ff",
+                        "primary": "#dbfcff",
+                        "on-primary-container": "#006970",
+                        "on-tertiary-fixed": "#270057",
+                        "surface-container-highest": "#34343a",
+                        "on-secondary-fixed-variant": "#8f0044",
+                        "surface-bright": "#38393f",
+                        "surface-variant": "#34343a",
+                        "on-surface-variant": "#b9cacb",
+                        "error": "#ffb4ab",
+                        "on-background": "#e3e1e9",
+                        "primary-fixed-dim": "#00dbe9",
+                        "error-container": "#93000a",
+                        "on-secondary-fixed": "#3f001a",
+                        "on-error-container": "#ffdad6",
+                        "on-error": "#690005",
+                        "surface-container": "#1e1f25",
+                        "on-tertiary-fixed-variant": "#5e00c1",
+                        "tertiary-fixed": "#ecdcff",
+                        "secondary": "#ffb1c4",
+                        "outline-variant": "#3b494b",
+                        "surface-tint": "#00dbe9",
+                        "on-primary": "#00363a",
+                        "primary-fixed": "#7df4ff",
+                        "inverse-surface": "#e3e1e9",
+                        "on-secondary": "#65002e",
+                        "surface": "#121318",
+                        "surface-container-lowest": "#0d0e13",
+                        "secondary-fixed-dim": "#ffb1c4",
+                        "inverse-on-surface": "#2f3036",
+                        "surface-container-high": "#292a2f",
+                        "primary-container": "#00f0ff",
+                        "background": "#121318",
+                        "on-tertiary": "#42008a",
+                        "on-surface": "#e3e1e9",
+                        "on-primary-fixed-variant": "#004f54",
+                        "surface-dim": "#121318",
+                        "tertiary-fixed-dim": "#d5baff",
+                        "inverse-primary": "#006970",
+                        "secondary-container": "#ff4a8d",
+                        "on-primary-fixed": "#002022",
+                        "tertiary": "#fbf3ff",
+                        "outline": "#849495",
+                        "surface-container-low": "#1a1b21"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "40px",
+                        "container-max": "1280px",
+                        "sm": "8px",
+                        "gutter": "20px",
+                        "unit": "4px",
+                        "xs": "4px",
+                        "md": "16px",
+                        "lg": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Space Grotesk"],
+                        "label-md": ["JetBrains Mono"],
+                        "headline-xl": ["Space Grotesk"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "body-lg": ["Geist"],
+                        "body-md": ["Geist"],
+                        "label-sm": ["JetBrains Mono"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+                        "label-md": ["14px", { "lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-xl": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "headline-lg-mobile": ["24px", { "lineHeight": "32px", "fontWeight": "700" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #0A0B10;
+        }
+        /* Custom Utilities for Glassmorphism & Cyberpunk glow */
+        .glass-panel {
+            background: rgba(18, 19, 24, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 240, 255, 0.1);
+        }
+        .neon-glow-primary {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+        .neon-glow-gold {
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+        
+        /* Gradients */
+        .bg-grad-cyan-magenta {
+            background: linear-gradient(135deg, #00f0ff 0%, #ff4a8d 100%);
+        }
+        .bg-grad-green-cyan {
+            background: linear-gradient(135deg, #00ff87 0%, #60efff 100%);
+        }
+        .bg-grad-indigo-purple {
+            background: linear-gradient(135deg, #8a2387 0%, #e94057 50%, #f27121 100%); /* Adjust to requested indigo/purple vibe */
+            background: linear-gradient(135deg, #4b6cb7 0%, #182848 100%); /* more indigo */
+        }
+        .bg-grad-gold-amber {
+            background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+        }
+
+        /* Border Gradients */
+        .border-grad-pro {
+            border: 1.5px solid transparent;
+            background-image: linear-gradient(rgba(18, 19, 24, 0.8), rgba(18, 19, 24, 0.8)), linear-gradient(135deg, #ffd700, #ff8c00);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+    </style>
+</head>
+<body class="text-on-background min-h-screen flex flex-col pb-24 md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface/30 backdrop-blur-xl docked full-width top-0 sticky border-b border-outline-variant/10 shadow-[0_0_15px_rgba(0,240,255,0.3)] z-50">
+<div class="flex justify-between items-center px-gutter w-full max-w-container-max mx-auto h-[64px]">
+<button class="text-primary hover:opacity-80 transition-opacity flex items-center justify-center p-2 rounded-full hover:bg-surface-variant/50">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary drop-shadow-[0_0_15px_rgba(0,240,255,0.3)] text-center flex-1">Calling Bell</h1>
+<div class="w-10 h-10 rounded-full overflow-hidden border border-primary-container/30">
+<img alt="User profile avatar" class="w-full h-full object-cover" data-alt="A futuristic cyberpunk avatar portrait of a user. The lighting is neon cyan and magenta, casting dramatic shadows. The style is highly detailed 3D render, dark background, premium tech aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr1pbAM2CoGuWenaxrE1vQime4tNEQWbtKkEelTwtdTUr1oYvppxyfwbFEjF-oaQT0dKve1JHXyV3jodNA_kR9mArgXOZI33K-dXKLXnTv6FalcJ7mszQ23UlK3ZeAnzPJhNFCwG4XV8AibqxQ1rAsXx1q47WFj5TqRJJT7khzJC5R1vFhwTPtwj6w2TmB32Z45JRgkptaGGw6v0X_ezZWlpT239-RkJz68HaT1VlnqYOP9h4EHmYqKw"/>
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 w-full max-w-container-max mx-auto px-gutter py-lg md:py-xl grid grid-cols-1 md:grid-cols-12 gap-lg relative z-10">
+<!-- Permissions Grid (Left col on md) -->
+<div class="md:col-span-7 flex flex-col gap-md">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-sm">System Status</h2>
+<!-- Battery Optimization Card -->
+<div class="glass-panel p-lg rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-md group hover:border-primary-container/50 transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center border border-outline-variant/30">
+<span class="material-symbols-outlined text-secondary" data-icon="battery_saver" style="font-variation-settings: 'FILL' 1;">battery_saver</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface mb-1">Battery Optimization</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">Critical for instant chimes. Bypass restrictions to ensure real-time alerts.</p>
+</div>
+</div>
+<button class="w-full sm:w-auto px-md py-sm rounded-lg bg-grad-green-cyan text-surface-container-lowest font-label-md text-label-md font-bold shadow-[0_0_15px_rgba(0,255,135,0.4)] hover:scale-105 transition-transform">
+                    Bypass Now
+                </button>
+</div>
+<!-- Notifications Card -->
+<div class="glass-panel p-lg rounded-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-md group hover:border-primary-container/50 transition-colors">
+<div class="flex items-center gap-md">
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary-container" data-icon="notifications" style="font-variation-settings: 'FILL' 1;">notifications</span>
+</div>
+<div>
+<h3 class="font-body-lg text-body-lg text-on-surface mb-1">Push Notifications</h3>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xs">Required to receive immediate room activity and member alerts.</p>
+</div>
+</div>
+<button class="w-full sm:w-auto px-md py-sm rounded-lg bg-grad-indigo-purple text-on-surface font-label-md text-label-md font-bold shadow-[0_0_15px_rgba(75,108,183,0.4)] hover:scale-105 transition-transform border border-white/10">
+                    Enable Alerts
+                </button>
+</div>
+</div>
+<!-- PRO Upgrade Card (Right col on md) -->
+<div class="md:col-span-5 relative mt-lg md:mt-0">
+<!-- Decorative Glow Behind Card -->
+<div class="absolute inset-0 bg-grad-gold-amber opacity-10 blur-3xl rounded-full"></div>
+<div class="glass-panel border-grad-pro p-xl rounded-xl h-full flex flex-col relative overflow-hidden z-10">
+<!-- Watermark Icon -->
+<span class="material-symbols-outlined absolute -bottom-10 -right-10 text-[200px] text-surface-bright/20 rotate-12" data-icon="workspace_premium">workspace_premium</span>
+<div class="flex items-center gap-sm mb-lg">
+<span class="material-symbols-outlined text-[#ffd700]" data-icon="star" style="font-variation-settings: 'FILL' 1;">star</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-transparent bg-clip-text bg-grad-gold-amber">Unlock PRO</h2>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-xl">Elevate your experience with Risk Technologies' premium communication suite.</p>
+<ul class="flex flex-col gap-md mb-xl flex-1">
+<li class="flex items-center gap-md p-sm bg-surface-container-low/50 rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary-container" data-icon="all_inclusive">all_inclusive</span>
+<span class="font-body-md text-body-md text-on-surface">Unlimited Rooms &amp; Members</span>
+</li>
+<li class="flex items-center gap-md p-sm bg-surface-container-low/50 rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary-container" data-icon="schedule">schedule</span>
+<span class="font-body-md text-body-md text-on-surface">Scheduled Chimes</span>
+</li>
+<li class="flex items-center gap-md p-sm bg-surface-container-low/50 rounded-lg border border-outline-variant/10">
+<span class="material-symbols-outlined text-primary-container" data-icon="smart_toy">smart_toy</span>
+<span class="font-body-md text-body-md text-on-surface">AI Assistant Integration</span>
+</li>
+</ul>
+<button class="w-full py-md rounded-lg bg-grad-gold-amber text-surface-container-lowest font-label-md text-label-md font-bold uppercase tracking-widest neon-glow-gold hover:opacity-90 transition-opacity mt-auto">
+                    Upgrade Now
+                </button>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto py-lg text-center border-t border-outline-variant/10 bg-surface/50 hidden md:block">
+<p class="font-label-sm text-label-sm text-on-surface-variant/50 uppercase tracking-widest">Developed by Risk Technologies © 2026 All Rights Reserved</p>
+</footer>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden bg-surface/40 backdrop-blur-lg fixed bottom-0 w-full z-50 rounded-t-xl border-t border-outline-variant/20 shadow-[0_-5px_15px_rgba(0,240,255,0.15)] pb-safe">
+<ul class="flex justify-around items-center px-4 py-2">
+<li>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-primary/80 transition-colors w-16 h-14" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+</li>
+<li>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-primary/80 transition-colors w-16 h-14" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="meeting_room">meeting_room</span>
+<span class="font-label-sm text-label-sm">Rooms</span>
+</a>
+</li>
+<li>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-primary/80 transition-colors w-16 h-14" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="settings">settings</span>
+<span class="font-label-sm text-label-sm">Settings</span>
+</a>
+</li>
+<li>
+<!-- Active State for PRO -->
+<a class="flex flex-col items-center justify-center text-primary drop-shadow-[0_0_8px_rgba(0,240,255,0.6)] font-bold translate-y-[-2px] transition-transform duration-200 w-16 h-14" href="#">
+<span class="material-symbols-outlined mb-1" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-label-sm text-label-sm">PRO</span>
+</a>
+</li>
+</ul>
+</nav>
+</body></html>

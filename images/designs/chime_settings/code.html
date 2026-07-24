@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Calling Bell - Chime Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Space+Grotesk:wght@700&amp;family=Geist:wght@400&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#ffd9e1",
+                    "on-secondary-container": "#590028",
+                    "on-tertiary-container": "#7d00fb",
+                    "tertiary-container": "#e4d1ff",
+                    "primary": "#dbfcff",
+                    "on-primary-container": "#006970",
+                    "on-tertiary-fixed": "#270057",
+                    "surface-container-highest": "#34343a",
+                    "on-secondary-fixed-variant": "#8f0044",
+                    "surface-bright": "#38393f",
+                    "surface-variant": "#34343a",
+                    "on-surface-variant": "#b9cacb",
+                    "error": "#ffb4ab",
+                    "on-background": "#e3e1e9",
+                    "primary-fixed-dim": "#00dbe9",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed": "#3f001a",
+                    "on-error-container": "#ffdad6",
+                    "on-error": "#690005",
+                    "surface-container": "#1e1f25",
+                    "on-tertiary-fixed-variant": "#5e00c1",
+                    "tertiary-fixed": "#ecdcff",
+                    "secondary": "#ffb1c4",
+                    "outline-variant": "#3b494b",
+                    "surface-tint": "#00dbe9",
+                    "on-primary": "#00363a",
+                    "primary-fixed": "#7df4ff",
+                    "inverse-surface": "#e3e1e9",
+                    "on-secondary": "#65002e",
+                    "surface": "#121318",
+                    "surface-container-lowest": "#0d0e13",
+                    "secondary-fixed-dim": "#ffb1c4",
+                    "inverse-on-surface": "#2f3036",
+                    "surface-container-high": "#292a2f",
+                    "primary-container": "#00f0ff",
+                    "background": "#121318",
+                    "on-tertiary": "#42008a",
+                    "on-surface": "#e3e1e9",
+                    "on-primary-fixed-variant": "#004f54",
+                    "surface-dim": "#121318",
+                    "tertiary-fixed-dim": "#d5baff",
+                    "inverse-primary": "#006970",
+                    "secondary-container": "#ff4a8d",
+                    "on-primary-fixed": "#002022",
+                    "tertiary": "#fbf3ff",
+                    "outline": "#849495",
+                    "surface-container-low": "#1a1b21"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "40px",
+                    "container-max": "1280px",
+                    "sm": "8px",
+                    "gutter": "20px",
+                    "unit": "4px",
+                    "xs": "4px",
+                    "md": "16px",
+                    "lg": "24px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Space Grotesk"],
+                    "label-md": ["JetBrains Mono"],
+                    "headline-xl": ["Space Grotesk"],
+                    "headline-lg-mobile": ["Space Grotesk"],
+                    "body-lg": ["Geist"],
+                    "body-md": ["Geist"],
+                    "label-sm": ["JetBrains Mono"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-xl": ["48px", {"lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.1em", "fontWeight": "500"}]
+            }
+          },
+        }
+      }
+    </script>
+<style>
+        /* Base styles */
+        body {
+            background-color: #0A0B10;
+            color: #e3e1e9;
+        }
+
+        /* Glassmorphism utilities */
+        .glass-panel {
+            background: rgba(18, 19, 24, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(132, 148, 149, 0.2);
+        }
+
+        /* Glow effects */
+        .glow-cyan {
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+        }
+        
+        .glow-magenta {
+            box-shadow: 0 0 15px rgba(255, 74, 141, 0.3);
+        }
+
+        .glow-border {
+            border: 1.5px solid transparent;
+            background-image: linear-gradient(#121318, #121318), linear-gradient(90deg, #00f0ff, #ff4a8d);
+            background-origin: border-box;
+            background-clip: padding-box, border-box;
+        }
+
+        /* Range Slider Styling */
+        input[type=range] {
+            -webkit-appearance: none;
+            width: 100%;
+            background: transparent;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #ffffff;
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .slider-cyan::-webkit-slider-runnable-track {
+            background: rgba(0, 240, 255, 0.3);
+        }
+        .slider-cyan::-webkit-slider-thumb {
+            background: #00f0ff;
+            box-shadow: 0 0 15px #00f0ff;
+        }
+
+        .slider-purple::-webkit-slider-runnable-track {
+            background: rgba(125, 0, 251, 0.3);
+        }
+        .slider-purple::-webkit-slider-thumb {
+            background: #7d00fb;
+            box-shadow: 0 0 15px #7d00fb;
+        }
+
+        /* Custom Toggle */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #00f0ff;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: rgba(0, 240, 255, 0.3);
+            border-color: #00f0ff;
+        }
+    </style>
+</head>
+<body class="font-body-md bg-background text-on-surface antialiased min-h-screen pb-[100px] md:pb-0">
+<!-- TopAppBar -->
+<header class="bg-surface/30 backdrop-blur-xl docked full-width top-0 sticky border-b border-outline-variant/10 shadow-[0_0_15px_rgba(0,240,255,0.3)] z-40">
+<div class="flex justify-between items-center px-gutter w-full max-w-container-max mx-auto py-md">
+<button class="text-on-surface-variant hover:opacity-80 transition-opacity">
+<span class="material-symbols-outlined" data-icon="notifications_active" data-weight="fill" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</button>
+<h1 class="font-headline-lg-mobile text-headline-lg-mobile font-bold text-primary drop-shadow-[0_0_15px_rgba(0,240,255,0.3)]">Calling Bell</h1>
+<div class="w-8 h-8 rounded-full bg-surface-variant overflow-hidden border border-outline-variant/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="person">person</span>
+</div>
+</div>
+</header>
+<main class="max-w-container-max mx-auto px-gutter pt-xl space-y-lg md:px-lg md:grid md:grid-cols-12 md:gap-lg md:space-y-0">
+<!-- Header Section -->
+<div class="md:col-span-12 mb-md">
+<h2 class="font-headline-lg md:font-headline-xl text-primary glow-cyan inline-block bg-clip-text">Chime Settings</h2>
+<p class="text-on-surface-variant mt-sm font-body-md">Configure audio, haptics, and voice notes for optimal alerting.</p>
+</div>
+<!-- Custom Audio & Haptics Bento -->
+<section class="glass-panel rounded-xl p-[20px] md:col-span-7 flex flex-col gap-lg glow-border">
+<h3 class="font-label-md text-primary tracking-widest uppercase mb-sm">Custom Audio &amp; Haptics</h3>
+<!-- Master Volume -->
+<div class="space-y-sm">
+<div class="flex justify-between items-center">
+<label class="font-body-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-primary-fixed-dim text-sm" data-icon="volume_up">volume_up</span>
+                        Master Volume
+                    </label>
+<span class="font-label-md text-primary-fixed-dim">80%</span>
+</div>
+<input class="slider-cyan mt-sm" max="100" min="0" type="range" value="80"/>
+</div>
+<!-- Haptics Intensity -->
+<div class="space-y-sm mt-md">
+<div class="flex justify-between items-center">
+<label class="font-body-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-tertiary-container text-sm" data-icon="vibration">vibration</span>
+                        Haptics Intensity
+                    </label>
+<span class="font-label-md text-on-tertiary-container">High</span>
+</div>
+<input class="slider-purple mt-sm" max="100" min="0" type="range" value="90"/>
+</div>
+<div class="w-full h-px bg-outline-variant/20 my-sm"></div>
+<!-- Vibration Toggle -->
+<div class="flex justify-between items-center">
+<label class="font-body-md text-on-surface flex items-center gap-sm">
+<span class="material-symbols-outlined text-on-surface-variant text-sm" data-icon="phonelink_ring">phonelink_ring</span>
+                    Enable Vibration
+                </label>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-surface-container-highest border-2 border-outline-variant appearance-none cursor-pointer z-10 transition-transform duration-200" id="toggle1" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-surface-variant border-2 border-outline-variant cursor-pointer transition-colors duration-200" for="toggle1"></label>
+</div>
+</div>
+</section>
+<!-- Right Column Group -->
+<div class="md:col-span-5 flex flex-col gap-lg">
+<!-- Chime Tone Selector -->
+<section class="glass-panel rounded-xl p-[20px]">
+<h3 class="font-label-md text-primary tracking-widest uppercase mb-md">Chime Tone</h3>
+<ul class="space-y-1">
+<li class="flex justify-between items-center p-sm rounded-lg hover:bg-surface-variant/30 transition-colors cursor-pointer">
+<span class="font-body-md text-on-surface">Classic Bell</span>
+<span class="material-symbols-outlined text-primary text-sm opacity-0" data-icon="check">check</span>
+</li>
+<!-- Active Item -->
+<li class="flex justify-between items-center p-sm rounded-lg bg-surface-variant/40 border-l-4 border-primary transition-colors cursor-pointer glow-cyan">
+<span class="font-body-md text-primary font-bold">Hotel Bell</span>
+<span class="material-symbols-outlined text-primary text-sm" data-icon="check">check</span>
+</li>
+<li class="flex justify-between items-center p-sm rounded-lg hover:bg-surface-variant/30 transition-colors cursor-pointer">
+<span class="font-body-md text-on-surface">Short Beep</span>
+<span class="material-symbols-outlined text-primary text-sm opacity-0" data-icon="check">check</span>
+</li>
+<li class="flex justify-between items-center p-sm rounded-lg hover:bg-surface-variant/30 transition-colors cursor-pointer">
+<span class="font-body-md text-on-surface">Network Chirp</span>
+<span class="material-symbols-outlined text-primary text-sm opacity-0" data-icon="check">check</span>
+</li>
+<li class="flex justify-between items-center p-sm rounded-lg hover:bg-surface-variant/30 transition-colors cursor-pointer">
+<span class="font-body-md text-error">Emergency Alarm</span>
+<span class="material-symbols-outlined text-primary text-sm opacity-0" data-icon="check">check</span>
+</li>
+</ul>
+</section>
+<!-- Voice Note Recorder -->
+<section class="glass-panel rounded-xl p-[20px] relative overflow-hidden group border border-secondary-container/30">
+<div class="absolute inset-0 bg-gradient-to-br from-secondary-container/10 to-transparent opacity-50 z-0"></div>
+<div class="relative z-10 flex flex-col items-center justify-center text-center py-md">
+<button class="w-16 h-16 rounded-full bg-secondary-container/20 backdrop-blur-md border border-secondary-container flex items-center justify-center hover:scale-105 transition-transform glow-magenta mb-sm">
+<span class="material-symbols-outlined text-secondary font-headline-lg" data-icon="mic">mic</span>
+</button>
+<p class="font-label-md text-on-surface">Record a 5-second voice chime</p>
+<p class="font-label-sm text-on-surface-variant mt-xs">Hold to record</p>
+</div>
+</section>
+</div>
+<div class="md:col-span-12 mt-xl text-center pb-xl border-t border-outline-variant/20 pt-lg">
+<p class="font-label-sm text-outline">Developed by Risk Technologies © 2026 All Rights Reserved</p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="bg-surface/40 backdrop-blur-lg fixed bottom-0 w-full z-50 rounded-t-xl border-t border-outline-variant/20 shadow-[0_-5px_15px_rgba(0,240,255,0.15)] md:hidden">
+<div class="flex justify-around items-center px-4 py-2 pb-safe">
+<button class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-primary/80 transition-colors">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-1">Home</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-primary/80 transition-colors">
+<span class="material-symbols-outlined" data-icon="meeting_room">meeting_room</span>
+<span class="font-label-sm text-label-sm mt-1">Rooms</span>
+</button>
+<!-- Active state -->
+<button class="flex flex-col items-center justify-center text-primary drop-shadow-[0_0_8px_rgba(0,240,255,0.6)] font-bold translate-y-[-2px] transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="settings" data-weight="fill" style="font-variation-settings: 'FILL' 1;">settings</span>
+<span class="font-label-sm text-label-sm mt-1">Settings</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant/60 hover:text-primary/80 transition-colors">
+<span class="material-symbols-outlined" data-icon="workspace_premium">workspace_premium</span>
+<span class="font-label-sm text-label-sm mt-1">PRO</span>
+</button>
+</div>
+</nav>
+</body></html>
