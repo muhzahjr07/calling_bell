@@ -84,17 +84,17 @@ Calling Bell/
 ### Building and Running the App
 
 1. **Clone the Repository:**
+
    ```bash
    git clone https://github.com/muhzahjr07/Calling-Bell.git
    cd Calling-Bell/android-app
    ```
-
 2. **Build Debug APK:**
    Using the Gradle wrapper:
+
    ```bash
    .\gradlew.bat assembleDebug
    ```
-
 3. **Deploy to Device/Emulator:**
    Open the `android-app` directory in Android Studio and click **Run** (`Shift + F10`).
 
