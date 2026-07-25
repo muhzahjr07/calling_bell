@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "187601687007",
-    "project_id": "calling-bell-d3b94",
-    "storage_bucket": "calling-bell-d3b94.firebasestorage.app"
+    "project_number": "YOUR_PROJECT_NUMBER",
+    "project_id": "YOUR_PROJECT_ID",
+    "storage_bucket": "YOUR_STORAGE_BUCKET"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:187601687007:android:7161d21552d3565899346a",
+        "mobilesdk_app_id": "YOUR_MOBILE_SDK_APP_ID",
         "android_client_info": {
           "package_name": "calling.bell.risktech"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBlFG6Ng2RnmHA4mKKj7-LXSsyZBAGKmbM"
+          "current_key": "YOUR_API_KEY"
         }
       ],
       "services": {
