@@ -7,10 +7,16 @@ const os = require('os');
 const app = express();
 app.use(cors());
 
+// Cloud load balancer health check
+app.get('/health', (req, res) => {
+  res.status(200).json({ status: 'healthy', timestamp: new Date().toISOString() });
+});
+
 // Lightweight discovery API endpoint for auto-detecting server IP
 app.get('/api/info', (req, res) => {
   res.json({ status: 'ok', app: 'Calling Bell' });
 });
+
 
 const server = http.createServer(app);
 

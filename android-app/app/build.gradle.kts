@@ -19,12 +19,26 @@ android {
         versionName = "1.0"
     }
 
+    signingConfigs {
+        create("release") {
+            val keystoreFile = file("release.keystore")
+            if (keystoreFile.exists()) {
+                storeFile = keystoreFile
+                storePassword = System.getenv("KEYSTORE_PASSWORD") ?: "callingbell123"
+                keyAlias = System.getenv("KEY_ALIAS") ?: "callingbell"
+                keyPassword = System.getenv("KEY_PASSWORD") ?: "callingbell123"
+            }
+        }
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.findByName("release") ?: signingConfigs.getByName("debug")
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
     }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
@@ -84,7 +98,11 @@ dependencies {
 
   // Navigation
   implementation("androidx.navigation:navigation-compose:2.7.7")
+
+  // Google Play Billing Library (In-App Purchases)
+  implementation("com.android.billingclient:billing-ktx:7.0.0")
 }
+
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile>().configureEach {
     compilerOptions {

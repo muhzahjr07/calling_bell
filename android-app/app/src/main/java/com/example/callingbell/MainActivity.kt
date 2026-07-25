@@ -1,6 +1,8 @@
 package com.example.callingbell
 
+import android.app.Activity
 import android.content.Intent
+
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -285,7 +287,8 @@ fun AppNavigator() {
                         SettingsScreen(prefs, currentTheme, navController)
                     }
                     composable("pro") {
-                        ProScreen(prefs, currentTheme, navController)
+                        val billingManager = remember { BillingManager(context, prefs) }
+                        ProScreen(prefs, currentTheme, navController, billingManager)
                     }
                     composable("about") {
                         AboutScreen(currentTheme, navController)
@@ -2329,12 +2332,20 @@ fun AboutScreen(theme: AppTheme, navController: NavHostController) {
 }
 
 @Composable
-fun ProScreen(prefs: SharedPrefsManager, theme: AppTheme, navController: NavHostController) {
+fun ProScreen(
+    prefs: SharedPrefsManager,
+    theme: AppTheme,
+    navController: NavHostController,
+    billingManager: BillingManager? = null
+) {
+    val context = LocalContext.current
     val textColor = theme.textColor
+    val priceState by billingManager?.proPrice?.collectAsState(initial = "$2.99") ?: remember { mutableStateOf("$2.99") }
+    val statusState by billingManager?.billingStatus?.collectAsState(initial = "Ready") ?: remember { mutableStateOf("Ready") }
 
-    Column(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Column(modifier = Modifier.fillMaxSize().padding(16.dp).verticalScroll(rememberScrollState())) {
         Text("PRO Features", fontSize = 22.sp, color = Color(0xFFFFD700), fontWeight = FontWeight.Bold)
-        Text("Unlock premium capabilities and power tools.", color = textColor.copy(alpha = 0.6f), fontSize = 12.sp)
+        Text("Unlock premium capabilities and power tools for lifetime.", color = textColor.copy(alpha = 0.6f), fontSize = 12.sp)
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -2347,14 +2358,34 @@ fun ProScreen(prefs: SharedPrefsManager, theme: AppTheme, navController: NavHost
             shape = RoundedCornerShape(16.dp)
         ) {
             Column(modifier = Modifier.padding(18.dp)) {
-                Row(verticalAlignment = Alignment.CenterVertically) {
-                    Text("⭐", fontSize = 24.sp)
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text("Unlock PRO", fontSize = 24.sp, color = Color(0xFFFFD700), fontWeight = FontWeight.Bold)
+                Row(
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Row(verticalAlignment = Alignment.CenterVertically) {
+                        Text("⭐", fontSize = 24.sp)
+                        Spacer(modifier = Modifier.width(8.dp))
+                        Text("Unlock PRO", fontSize = 24.sp, color = Color(0xFFFFD700), fontWeight = FontWeight.Bold)
+                    }
+                    Box(
+                        modifier = Modifier
+                            .clip(RoundedCornerShape(8.dp))
+                            .background(Color(0xFFFFD700).copy(alpha = 0.2f))
+                            .border(1.dp, Color(0xFFFFD700), RoundedCornerShape(8.dp))
+                            .padding(horizontal = 10.dp, vertical = 4.dp)
+                    ) {
+                        Text(
+                            priceState ?: "$2.99",
+                            color = Color(0xFFFFD700),
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Bold
+                        )
+                    }
                 }
                 Spacer(modifier = Modifier.height(6.dp))
                 Text(
-                    "Elevate your experience with Risk Technologies' premium communication suite.",
+                    "One-time purchase (${priceState ?: "$2.99"}). Lifetime access. No subscription fees.",
                     color = textColor.copy(alpha = 0.7f),
                     fontSize = 13.sp
                 )
@@ -2402,19 +2433,41 @@ fun ProScreen(prefs: SharedPrefsManager, theme: AppTheme, navController: NavHost
 
                 Spacer(modifier = Modifier.height(20.dp))
                 Button(
-                    onClick = { prefs.isPro = true },
+                    onClick = {
+                        if (context is Activity) {
+                            billingManager?.launchBillingFlow(context)
+                        } else {
+                            prefs.isPro = true
+                        }
+                    },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0x33FFD700)),
                     shape = RoundedCornerShape(14.dp),
                     modifier = Modifier
                         .fillMaxWidth()
                         .border(1.5.dp, Brush.linearGradient(listOf(Color(0xFFFFD700), Color(0xFFFF8C00))), RoundedCornerShape(14.dp))
                 ) {
-                    Text(if (prefs.isPro) "PRO ACTIVE" else "UPGRADE NOW", color = Color(0xFFFFD700), fontWeight = FontWeight.Bold)
+                    Text(
+                        if (prefs.isPro) "PRO ACTIVE ✅" else "UPGRADE NOW (${priceState ?: "$2.99"})",
+                        color = Color(0xFFFFD700),
+                        fontWeight = FontWeight.Bold
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+                OutlinedButton(
+                    onClick = {
+                        billingManager?.queryExistingPurchases()
+                    },
+                    shape = RoundedCornerShape(10.dp),
+                    modifier = Modifier.fillMaxWidth()
+                ) {
+                    Text("Restore Purchases 🔄", color = theme.subtextColor, fontSize = 12.sp)
                 }
             }
         }
     }
 }
+
 
 @Composable
 fun SplashScreen(navController: NavHostController, prefs: SharedPrefsManager, theme: AppTheme) {
